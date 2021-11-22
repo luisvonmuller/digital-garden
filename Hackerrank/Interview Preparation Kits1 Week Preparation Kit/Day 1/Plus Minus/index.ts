@@ -36,8 +36,8 @@ const plusMinus = (arr: number[]): void => {
 
   /* Lets count up the numbers as it goes. */
   const totalPositiveNumbers: number = arr.filter((number) => number > 0).length;
-  const totalNegativeNumbers: number = arr.filter((number) => number > 0).length;
-  const totalZeroNumbers: number = arr.filter((number) => number > 0).length;
+  const totalNegativeNumbers: number = arr.filter((number) => number < 0).length;
+  const totalZeroNumbers: number = arr.filter((number) => number == 0).length;
 
   console.log(plusMinusHelper(totalPositiveNumbers, numberArrayLength));  /* Display the Proportion for Positive numbers */
   console.log(plusMinusHelper(totalNegativeNumbers, numberArrayLength)); /* Display the Proportion for Negative numbers */
