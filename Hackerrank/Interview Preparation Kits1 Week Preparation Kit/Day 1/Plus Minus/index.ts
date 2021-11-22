@@ -27,6 +27,7 @@ const readLine = (): string => {
 
 /* ## plusMinus
  * The function accepts INTEGER_ARRAY arr as parameter.
+ ! Sample Input : -4 3 -9 0 4 1 (Where n, from arr[n] goes like 6.)
  */
 
 const plusMinus = (arr: number[]): void => {
@@ -46,8 +47,8 @@ const plusMinus = (arr: number[]): void => {
 /** ## Format Helper to get up to 6 decimal places 
  * * We will not check if the divvy is actually bigger then the divider itself; (Not on the question Scope)
 */
-const plusMinusHelper = (divvy: number, divider: number): number => {
-  
+const plusMinusHelper = (divvy: number, divider: number): string => {
+  return (divvy / divider).toFixed(6) /* Returns as Fixed (6 decimal positions) */
 }
 
 function main() {
