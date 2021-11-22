@@ -35,43 +35,20 @@ const readLine = (): string => {
  */
 
 const miniMaxSum = (arr: number[]): void => {
-  const smallerNumbers: number[] = getSmallerNumbers(arr);
-  const biggerNumbers: number[] = getBiggerNumbers(arr);
-  console.log(`${smallerNumbers}  ${biggerNumbers}`);
+  /* Ordeno de maneira Crescente e somo */
+  const sumSmallers: number = arr.sort((a, b) => a - b).slice(0, 4).reduce(sumUp, 0);
+
+  /* Ordeno de maneira Descrescente e somo */
+  const sumBiggers: number = arr.sort((a, b) => b - a).slice(0, 4).reduce(sumUp, 0);
+
+  console.log(`${sumSmallers}  ${sumBiggers}`);
 }
 
-/* ## Get Smaller ones */
-const getSmallerNumbers = (arr: number[]): number[] => {
-  const smallerNumbersArray: number[] = [];
-  return arr.filter((number) => {
-    if (smallerNumbersArray.length < 4) {
-      smallerNumbersArray.push(number);
-      return checkSmaller(smallerNumbersArray, number);
-    }
-  });
-}
-
-const checkSmaller = (arr: number[], num: number): number => {
-  return arr.filter(someNum => someNum > num)[0]
-}
-
-/** ## Get Notorius Big ones */
-const getBiggerNumbers = (arr: number[]): number[] => {
-  const biggerNumbersArray: number[] = [];
-  return arr.filter((number) => {
-    if (getBiggerNumbers.length < 4) {
-      biggerNumbersArray.push(number);
-      return checkBigger(biggerNumbersArray, number);
-    }
-  });
-}
-
-const checkBigger = (arr: number[], num: number): number => {
-  return arr.filter(someNum => someNum > num)[0]
+const sumUp = (accumulator: number, num: number): number => {
+  return accumulator + num;
 }
 
 function main() {
-
   const arr: number[] = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
 
   miniMaxSum(arr);
