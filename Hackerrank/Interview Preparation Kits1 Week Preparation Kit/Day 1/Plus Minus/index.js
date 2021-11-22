@@ -21,10 +21,12 @@ function readLine() {
  * The function accepts INTEGER_ARRAY arr as parameter.
  */
 function plusMinus(arr) {
-    // Write your code here
 }
 function main() {
+    /** Gets first line -> The array size. */
     var n = parseInt(readLine().trim(), 10);
+    /** Gets spaced numbers as integers */
     var arr = readLine().replace(/\s+$/g, '').split(' ').map(function (arrTemp) { return parseInt(arrTemp, 10); });
     plusMinus(arr);
 }
+main();

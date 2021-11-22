@@ -29,14 +29,16 @@ function readLine(): string {
  */
 
 function plusMinus(arr: number[]): void {
-  // Write your code here
 
 }
 
 function main() {
+  /** Gets first line -> The array size. */
   const n: number = parseInt(readLine().trim(), 10);
-
+  /** Gets spaced numbers as integers */
   const arr: number[] = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
 
   plusMinus(arr);
 }
+
+main();
