@@ -41,7 +41,7 @@ const miniMaxSum = (arr: number[]): void => {
   /* Ordeno de maneira Descrescente e somo */
   const sumBiggers: number = arr.sort((a, b) => b - a).slice(0, 4).reduce(sumUp, 0);
 
-  console.log(`${sumSmallers}  ${sumBiggers}`);
+  console.log(`${sumSmallers} ${sumBiggers}`);
 }
 
 const sumUp = (accumulator: number, num: number): number => {
