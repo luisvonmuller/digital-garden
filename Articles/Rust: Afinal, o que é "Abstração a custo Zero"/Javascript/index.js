@@ -31,11 +31,12 @@ while (counterExecutions <= 10) {
     };
     counter++;
   }
+  dataSetWantedData = [];
   counterExecutions++;
 }
 console.timeEnd("js-sem-abstração");
 
-// ! O abaixo seria com  "OverHead/Abstração" (Inicaremos o "Timer")
+// ! O abaixo seria com "OverHead/Abstração" (Inicaremos o "Timer")
 console.time("js-com-abstração");
 Array.from(Array(10).keys()).forEach(() => {
   dataSetWantedData = dataSet.map((airPort) => {
