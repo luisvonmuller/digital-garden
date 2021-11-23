@@ -1,90 +1,70 @@
-Given an array of integers, calculate the ratios of its elements that are **positive, negative, and zero.**
-**Print the decimal value of each fraction** on a new line with **places** after the **decimal**.
+Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
 
-Note: This challenge introduces **precision** problems. The test cases are scaled to **six** decimal places, though answers with absolute error of up to are acceptable.
+Example
+The minimum sum is and the maximum sum is
 
-## Example
-There are elements, two **positive**, two **negative** and one zero. Their ratios are , and Results are printed as:
-  0.400000
-  0.400000
-  0.200000
+. The function prints
 
-### Function Description
-* plusMinus has the following parameter(s):
-   - int arr[n]: an array of integers
+16 24
 
-* Print the **ratios of Given an array of integers**, calculate the **ratios** of its **elements** that are positive, negative, and zero. Print the decimal value of each fraction on a new line with places after the decimal.
+Function Description
 
-## Input Format
+Complete the miniMaxSum function in the editor below.
 
-The **first line contains an integer**, the **size** of the **array**. The **second line contains space-separated integers** that describe 
-### Constraints: 
-  * First Line -> 0 < n <= 100
-  * -100 <= array[n] <= 100
-  
-## Output Format
+miniMaxSum has the following parameter(s):
 
--> Print the following lines, each to decimals:
-   * proportion of positive values
-   * proportion of negative values
-   *  proportion of zeros
+    arr: an array of 
 
-### Sample Input
+    integers
 
-STDIN           Function
------           --------
-6               arr[] size n = 6
--4 3 -9 0 4 1   arr = [-4, 3, -9, 0, 4, 1]
+Print
 
-### Sample Output
+Print two space-separated integers on one line: the minimum sum and the maximum sum of
+of
 
-0.500000
-0.333333
-0.166667
-
-Explanation
-
-There are positive numbers, negative numbers, and zero in the array. The proportions of occurrence are **positive**: 0,5000 , **negative**: 0,3333 and **zeros**: 0,166667 . , negative and zero values in the array. Each value should be printed on a separate line with
-
-digits after the decimal. The function should not return a value.
+elements.
 
 Input Format
 
-The first line contains an integer,
-, the size of the array.
-The second line contains space-separated integers that describe
-
-.
+A single line of five space-separated integers.
 
 Constraints
 
-
 Output Format
 
-Print the following
-lines, each to
-
-decimals:
-
-    proportion of positive values
-    proportion of negative values
-    proportion of zeros
+Print two space-separated long integers denoting the respective minimum and maximum values that can be calculated by summing exactly four of the five integers. (The output can be greater than a 32 bit integer.)
 
 Sample Input
 
-STDIN           Function
------           --------
-6               arr[] size n = 6
--4 3 -9 0 4 1   arr = [-4, 3, -9, 0, 4, 1]
+1 2 3 4 5
 
 Sample Output
 
-0.500000
-0.333333
-0.166667
+10 14
 
 Explanation
 
-There are
-positive numbers, negative numbers, and zero in the array.
-The proportions of occurrence are positive: , negative: and zeros: . 
+The numbers are
+, , , , and
+
+. Calculate the following sums using four of the five integers:
+
+    Sum everything except 
+
+, the sum is
+.
+Sum everything except
+, the sum is
+.
+Sum everything except
+, the sum is
+.
+Sum everything except
+, the sum is
+.
+Sum everything except
+, the sum is
+
+    .
+
+Hints: Beware of integer overflow! Use 64-bit Integer.
