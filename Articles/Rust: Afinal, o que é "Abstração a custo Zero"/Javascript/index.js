@@ -13,11 +13,11 @@ console.time("js-sem-abstração");
  */
 const dataSetLenght = dataSet.length;
 /** Contador que iterará sobre o nosso "Vetor" de Aeroportos - @type number */
-let counter = 0;
 let counterExecutions = 0;
-let dataSetWantedData = [];
 // ! O abaixo seria um loop com o "Overhead"/"Sem Abstração"
 while (counterExecutions <= 10) {
+  let counter = 0;
+  let dataSetWantedData = [];
   while (dataSetLenght > counter) {
     /** ## Pegando os dados...
      * Pegamos o Objeto Aeroporto de dentro de nosso Vetor "Aeroportos" -
@@ -31,7 +31,6 @@ while (counterExecutions <= 10) {
     };
     counter++;
   }
-  dataSetWantedData = [];
   counterExecutions++;
 }
 console.timeEnd("js-sem-abstração");
