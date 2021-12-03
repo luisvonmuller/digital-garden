@@ -32,15 +32,15 @@ const tryOutDataSet: BetterBets<number[]>[] = Array.from(Array(10e6).keys()).map
 
 const megaSenaDataSet: MegaSenaBet[] = [...tryOutDataSet]
 
-// console.time("js-com-abstração-generics");
-// genericsLottery<number[], number[], number[]>(numerosPosssiveisMegaSena, resultadoOficial, tryOutDataSet);
-// console.timeEnd("js-com-abstração-generics");
+console.time("js-com-abstração-generics");
+genericsLottery<number[], number[], number[]>(numerosPosssiveisMegaSena, resultadoOficial, tryOutDataSet);
+console.timeEnd("js-com-abstração-generics");
 
 // /* Let my computer sleep for a while lol */
 // new Promise((a) => setTimeout(a, 1000));
-
-console.time("js-sem-abstração-específico-para-mega-sena");
-nonGenericMegaSena(resultadoOficial, megaSenaDataSet);
-console.timeEnd("js-sem-abstração-específico-para-mega-sena");
+// 
+// console.time("js-sem-abstração-específico-para-mega-sena");
+// nonGenericMegaSena(resultadoOficial, megaSenaDataSet);
+// console.timeEnd("js-sem-abstração-específico-para-mega-sena");
 
 
