@@ -1,0 +1,1 @@
+/Users/luisvmuller/Documents/GitHub/digital-garden/Black\ Hat\ Rust\ /sha1_cracker/target/debug/sha1_cracker: /Users/luisvmuller/Documents/GitHub/digital-garden/Black\ Hat\ Rust\ /sha1_cracker/src/main.rs
