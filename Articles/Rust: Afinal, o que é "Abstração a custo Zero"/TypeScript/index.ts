@@ -44,3 +44,14 @@ console.timeEnd("js-com-abstração-generics");
 // console.timeEnd("js-sem-abstração-específico-para-mega-sena");
 
 
+class Animal {
+   comer() {
+
+}
+}
+
+class Dog extends Animal {
+   Latir() {
+
+}
+}

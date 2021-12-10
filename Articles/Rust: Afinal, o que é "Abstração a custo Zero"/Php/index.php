@@ -6,10 +6,10 @@
 */
 
 declare(strict_types=1);
+}
 
-/** Define o nosso data Set. */
-define('DATASETAIRPORTS', json_decode(file_get_contents('../data.json'), true));
-var_dump(count(DATASETAIRPORTS)); // Amount of listed AirPorts ... int(4408)
+
+
 
 /** 
  Meta 
