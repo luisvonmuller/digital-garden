@@ -31,7 +31,7 @@ fn main() {
 }
 
 /* Since the Rc pointer doesn't have add operations and dysplays one I'll need to code them */
-
+#[allow(dead_code)]
 unsafe fn thread_play_arrounds(pointer_to_poison: *mut i32) {
     println!(
         "From the Unsafe thread the value is: {}",
