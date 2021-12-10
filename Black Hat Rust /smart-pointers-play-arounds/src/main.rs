@@ -14,7 +14,7 @@ fn main() {
     let pointer: Rc<i32> = Rc::new(number - 3); // We creates a instant snapshot of the value 4. We change it, but dont matters.
     number += 4;
     /**  Number is 11  
-     * ! Also triggers "unused_assignments"warning
+     * ! Also triggers "unused_assignments" warning
      * */
     /* Since: std::rc::Rc<i32>` cannot be sent between threads safely... <Imagine and unsafe ferris here/> */
     // unsafe {
