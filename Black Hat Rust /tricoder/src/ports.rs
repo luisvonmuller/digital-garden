@@ -57,7 +57,7 @@ async fn scan_port(hostname: &str, port: u16) -> Port {
             is_open: false,
         };
     }
-    /* LOL THANKS CLIPPY THIS MACRO IS GREAT! */
+
     let is_open = matches!(
         tokio::time::timeout(timeout, TcpStream::connect(&socket_addresses[0])).await,
         Ok(Ok(_))
