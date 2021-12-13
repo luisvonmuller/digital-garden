@@ -2,11 +2,11 @@ use crate::{
     common_ports::MOST_COMMON_PORTS, // Gets from common_ports that I got from the repo and it gots from classic nmap packg
     model::{Port, Subdomain},        // Imports our model (Data structure)
 };
+use futures::StreamExt;
 use std::net::{SocketAddr, ToSocketAddrs};
 use std::time::Duration;
 use tokio::net::TcpStream;
 use tokio::sync::mpsc;
-use tokio_stream::prelude::*;
 
 pub async fn scan_ports(concurrency: usize, subdomain: Subdomain) -> Subdomain {
     let mut ret = subdomain.clone();
@@ -50,21 +50,18 @@ async fn scan_port(hostname: &str, port: u16) -> Port {
         .expect("port scanner: Creating socket address")
         .collect();
 
-    if socket_addresses.len() == 0 {
+    if socket_addresses.is_empty() {
+        // Checking vector size.
         return Port {
-            port: port,
+            port,
             is_open: false,
         };
     }
+    /* LOL THANKS CLIPPY THIS MACRO IS GREAT! */
+    let is_open = matches!(
+        tokio::time::timeout(timeout, TcpStream::connect(&socket_addresses[0])).await,
+        Ok(Ok(_))
+    );
 
-    let is_open =
-        match tokio::time::timeout(timeout, TcpStream::connect(&socket_addresses[0])).await {
-            Ok(Ok(_)) => true,
-            _ => false,
-        };
-
-    Port {
-        port: port,
-        is_open,
-    }
+    Port { port, is_open }
 }

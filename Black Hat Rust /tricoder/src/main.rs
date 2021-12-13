@@ -1,5 +1,5 @@
-use futures::{stream, StreamExt};
-use reqwest::Client;
+use futures::{stream, StreamExt}; // Asyncs the stream into threads and much more...
+use reqwest::Client; // "Axios" like client
 use std::{
     env,
     time::{Duration, Instant},
@@ -13,8 +13,9 @@ mod subdomains;
 use model::Subdomain;
 mod common_ports;
 
-#[tokio::main]
+#[tokio::main] // Derives its and Async Runtime...
 async fn main() -> Result<(), anyhow::Error> {
+    /* Gets args */
     let args: Vec<String> = env::args().collect();
 
     if args.len() != 2 {
@@ -28,14 +29,14 @@ async fn main() -> Result<(), anyhow::Error> {
 
     let ports_concurrency = 200;
     let subdomains_concurrency = 100;
-    let scan_start = Instant::now();
-
+    let scan_start = Instant::now(); // Start Timer.
+                                     /* Lets enumarate out */
     let subdomains = subdomains::enumerate(&http_client, target).await?;
 
     // Concurrent stream method 1: Using buffer_unordered + collect
     let scan_result: Vec<Subdomain> = stream::iter(subdomains.into_iter())
         .map(|subdomain| ports::scan_ports(ports_concurrency, subdomain))
-        .buffer_unordered(subdomains_concurrency)
+        .buffer_unordered(subdomains_concurrency) // Thats cool!
         .collect()
         .await;
 
@@ -52,8 +53,8 @@ async fn main() -> Result<(), anyhow::Error> {
     //     })
     //     .await;
 
-    let scan_duration = scan_start.elapsed();
-    println!("Scan completed in {:?}", scan_duration);
+    let scan_duration = scan_start.elapsed(); // Closes the Timer.
+    println!("Scan completed in {:?}", scan_duration); // Shows up it.
 
     for subdomain in scan_result {
         println!("{}:", &subdomain.domain);
@@ -61,7 +62,7 @@ async fn main() -> Result<(), anyhow::Error> {
             println!("    {}: open", port.port);
         }
 
-        println!("");
+        println!(); // Empty arg print line macro to just skip one every result ...
     }
 
     Ok(())
