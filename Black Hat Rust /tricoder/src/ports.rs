@@ -44,7 +44,7 @@ pub async fn scan_ports(concurrency: usize, subdomain: Subdomain) -> Subdomain {
 }
 
 async fn scan_port(hostname: &str, port: u16) -> Port {
-    let timeout = Duration::from_secs(3);
+    let timeout = Duration::from_secs(3); // Creates the setTimeout() like funtion...
     let socket_addresses: Vec<SocketAddr> = format!("{}:{}", hostname, port)
         .to_socket_addrs()
         .expect("port scanner: Creating socket address")
@@ -57,9 +57,9 @@ async fn scan_port(hostname: &str, port: u16) -> Port {
             is_open: false,
         };
     }
-
+    /* The great thing about all this is that on this type of async operation no resource-blocking will occours. */
     let is_open = matches!(
-        tokio::time::timeout(timeout, TcpStream::connect(&socket_addresses[0])).await,
+        tokio::time::timeout(timeout, TcpStream::connect(&socket_addresses[0])).await, // Heres the Timeout on tokio aplied to a "Promise".
         Ok(Ok(_))
     );
 
